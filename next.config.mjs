@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 启用静态导出以支持GitHub Pages等静态托管
-  output: 'export',
+  // 根据环境决定是否启用静态导出
+  ...(process.env.NODE_ENV === 'production' ? { output: 'export' } : {}),
   
   // 禁用图像优化（静态导出不支持）
   images: {

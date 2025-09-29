@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start",
+    "start": "next dev --turbopack",
+    "serve": "npx serve out",
     "lint": "eslint",
-    "export": "next build && next export",
+    "export": "next build",
     "deploy": "npm run build"
   },
   "dependencies": {
