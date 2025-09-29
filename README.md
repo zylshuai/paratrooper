@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🪂 军事伞兵模拟系统
 
-## Getting Started
+一个基于Next.js和Canvas的实时军事伞兵模拟系统，展示伞兵降落、组队、跟随和作战的完整流程。
 
-First, run the development server:
+## ✨ 主要特性
+
+- **真实物理模拟**：伞兵按不同速度降落，模拟真实的空投场景
+- **智能组队系统**：根据着陆时间和距离自动组建小队
+- **动态状态管理**：支持等待、跟随、单独行动等多种作战状态
+- **间距控制**：自动保持合理的战术间距，避免拥挤
+- **实时可视化**：Canvas动画展示伞兵运动轨迹和队伍连线
+- **响应式界面**：支持各种屏幕尺寸，参数实时调整
+
+## 🎮 功能演示
+
+### 模拟参数
+- **伞兵数量 (A)**：150+ 个伞兵同时模拟
+- **投放区域**：可调整的矩形空投区域
+- **相遇距离 (Z)**：队伍形成的触发距离
+- **间距控制 (z)**：最小战术间距
+- **移动速度**：支持最大/最小速度限制
+
+### 状态系统
+- 🟣 **等待组队**：刚着陆，寻找附近队友
+- 🟢 **头兵**：较大尺寸+深绿边框，带领队伍
+- 🔵 **跟随者**：保持与头兵的战术距离
+- 🟠 **单独行动**：超时或脱队的独行伞兵
+
+## 🚀 快速开始
+
+### 本地开发
 
 ```bash
+# 克隆项目
+git clone <your-repo>
+cd paratrooper
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+访问 http://localhost:3000 开始体验！
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🌐 在线部署
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### 方案一：Vercel (推荐)
+1. 推送代码到GitHub
+2. 访问 [vercel.com](https://vercel.com) 并连接仓库
+3. 一键自动部署，获得永久链接
 
-## Learn More
+#### 方案二：GitHub Pages
+1. 启用仓库的GitHub Pages功能
+2. GitHub Actions会自动构建和部署
+3. 访问 `https://username.github.io/paratrooper`
 
-To learn more about Next.js, take a look at the following resources:
+更多部署选项请查看 [部署指南](./DEPLOYMENT.md)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ 技术栈
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **框架**：Next.js 15 (React 19)
+- **语言**：TypeScript
+- **渲染**：HTML5 Canvas
+- **样式**：Tailwind CSS
+- **构建**：Turbopack
 
-## Deploy on Vercel
+## 🎯 系统架构
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+types/paratrooper.ts     # 类型定义
+lib/ParatrooperSimulation.ts  # 核心模拟引擎
+app/page.tsx            # React界面组件
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 核心算法
+- **降落物理**：重力模拟和时间控制
+- **距离计算**：欧几里得距离判定
+- **队伍管理**：动态分组和层级关系
+- **间距控制**：基于力的推挤算法
+- **状态机**：双状态系统（物理+作战）
+
+## 🎨 界面说明
+
+- **左侧控制面板**：实时调整模拟参数
+- **图例说明**：详细的状态和形状说明
+- **Canvas画布**：主要的动画渲染区域
+- **统计信息**：实时显示各状态伞兵数量
+
+## 📱 响应式设计
+
+支持桌面、平板和手机端，画布自动缩放适配不同屏幕。
+
+## 🤝 贡献指南
+
+欢迎提交Issue和Pull Request！
+
+## 📄 许可证
+
+MIT License
